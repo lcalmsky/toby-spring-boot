@@ -1,6 +1,6 @@
 package io.lcalmsky.tobyspringboot;
 
-import java.util.Objects;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,6 +17,9 @@ public class HelloController {
 
   @GetMapping
   public String hello(String name) {
-    return helloService.hello(Objects.requireNonNull(name));
+    if (!StringUtils.hasText(name)) {
+      throw new IllegalArgumentException();
+    }
+    return helloService.hello(name);
   }
 }

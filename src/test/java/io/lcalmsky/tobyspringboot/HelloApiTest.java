@@ -29,4 +29,14 @@ public class HelloApiTest {
             .startsWith(MediaType.TEXT_PLAIN_VALUE));
   }
 
+  @Test
+  void failsHelloApi() {
+    // given
+    TestRestTemplate testRestTemplate = new TestRestTemplate();
+    // when
+    ResponseEntity<String> responseEntity = testRestTemplate.getForEntity(
+        "http://localhost:8080/hello?name=", String.class);
+    // then
+    assertSame(HttpStatus.INTERNAL_SERVER_ERROR, responseEntity.getStatusCode());
+  }
 }
