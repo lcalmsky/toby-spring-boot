@@ -13,4 +13,10 @@ class HelloServiceTest {
     assertEquals("hello jaime", actual);
   }
 
+  @Test
+  void helloDecorator() {
+    HelloDecorator helloDecorator = new HelloDecorator(new SimpleHelloService());
+    String actual = helloDecorator.hello("jaime");
+    assertEquals("*hello jaime*", actual);
+  }
 }

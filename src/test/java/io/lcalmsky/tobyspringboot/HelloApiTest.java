@@ -23,7 +23,7 @@ public class HelloApiTest {
         "http://localhost:8080/hello?name={name}", String.class, "jaime");
     // then
     assertSame(HttpStatus.OK, responseEntity.getStatusCode());
-    assertEquals("hello jaime", responseEntity.getBody());
+    assertEquals("*hello jaime*", responseEntity.getBody());
     assertTrue(
         Objects.requireNonNull(responseEntity.getHeaders().getFirst(HttpHeaders.CONTENT_TYPE))
             .startsWith(MediaType.TEXT_PLAIN_VALUE));
