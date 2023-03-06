@@ -1,0 +1,2 @@
+io.lcalmsky.config.autoconfig.DispatcherServletConfiguration
+io.lcalmsky.config.autoconfig.TomcatWebServerConfiguration
