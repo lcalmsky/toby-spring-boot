@@ -1,5 +1,6 @@
 package io.lcalmsky.tobyspringboot;
 
+import io.lcalmsky.config.MySpringBootApplication;
 import org.springframework.boot.SpringApplication;
 
 @MySpringBootApplication
