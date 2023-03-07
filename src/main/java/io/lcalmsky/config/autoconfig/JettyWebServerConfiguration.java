@@ -1,29 +1,29 @@
 package io.lcalmsky.config.autoconfig;
 
-import io.lcalmsky.config.autoconfig.TomcatWebServerConfiguration.TomcatCondition;
-import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
+import io.lcalmsky.config.MyAutoConfiguration;
+import io.lcalmsky.config.autoconfig.JettyWebServerConfiguration.JettyCondition;
+import org.springframework.boot.web.embedded.jetty.JettyServletWebServerFactory;
 import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Condition;
 import org.springframework.context.annotation.ConditionContext;
 import org.springframework.context.annotation.Conditional;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.core.type.AnnotatedTypeMetadata;
 
-@Configuration
-@Conditional(TomcatCondition.class)
-public class TomcatWebServerConfiguration {
+@MyAutoConfiguration
+@Conditional(JettyCondition.class)
+public class JettyWebServerConfiguration {
 
-  @Bean("tomcatWebServerFactory")
+  @Bean("jettyWebServerFactory")
   public ServletWebServerFactory servletWebServerFactory() {
-    return new TomcatServletWebServerFactory();
+    return new JettyServletWebServerFactory();
   }
 
-  static class TomcatCondition implements Condition {
+  static class JettyCondition implements Condition {
 
     @Override
     public boolean matches(ConditionContext context, AnnotatedTypeMetadata metadata) {
-      return false;
+      return true;
     }
   }
 }
