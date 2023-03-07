@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class TomcatWebServerConfiguration {
 
-  @Bean
+  @Bean("tomcatWebServerFactory")
   public ServletWebServerFactory servletWebServerFactory() {
     return new TomcatServletWebServerFactory();
   }
