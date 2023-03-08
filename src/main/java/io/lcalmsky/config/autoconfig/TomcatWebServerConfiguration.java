@@ -1,14 +1,17 @@
 package io.lcalmsky.config.autoconfig;
 
 import io.lcalmsky.config.ConditionalMyOnClass;
+import io.lcalmsky.config.EnableMyConfigurationProperties;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 
 @Configuration
 @ConditionalMyOnClass("org.apache.catalina.startup.Tomcat")
+@EnableMyConfigurationProperties(ServerProperties.class)
 public class TomcatWebServerConfiguration {
 
   @Bean("tomcatWebServerFactory")

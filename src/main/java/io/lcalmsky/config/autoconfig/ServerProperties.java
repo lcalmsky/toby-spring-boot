@@ -1,5 +1,8 @@
 package io.lcalmsky.config.autoconfig;
 
+import io.lcalmsky.config.MyConfigurationProperties;
+
+@MyConfigurationProperties(prefix = "server")
 public class ServerProperties {
 
   private String contextPath;

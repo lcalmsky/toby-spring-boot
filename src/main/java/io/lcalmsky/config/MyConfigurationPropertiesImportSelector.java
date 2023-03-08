@@ -1,0 +1,17 @@
+package io.lcalmsky.config;
+
+import java.util.Objects;
+import org.springframework.context.annotation.DeferredImportSelector;
+import org.springframework.core.type.AnnotationMetadata;
+import org.springframework.util.MultiValueMap;
+
+public class MyConfigurationPropertiesImportSelector implements DeferredImportSelector {
+
+  @Override
+  public String[] selectImports(AnnotationMetadata importingClassMetadata) {
+    MultiValueMap<String, Object> attributes = importingClassMetadata.getAllAnnotationAttributes(
+        EnableMyConfigurationProperties.class.getName());
+    Class<?> propertyClass = (Class<?>) Objects.requireNonNull(attributes).getFirst("value");
+    return new String[]{Objects.requireNonNull(propertyClass).getName()};
+  }
+}
