@@ -20,7 +20,7 @@ public class HelloApiTest {
     TestRestTemplate testRestTemplate = new TestRestTemplate();
     // when
     ResponseEntity<String> responseEntity = testRestTemplate.getForEntity(
-        "http://localhost:8080/hello?name={name}", String.class, "jaime");
+        "http://localhost:8080/app/hello?name={name}", String.class, "jaime");
     // then
     assertSame(HttpStatus.OK, responseEntity.getStatusCode());
     assertEquals("*hello jaime*", responseEntity.getBody());
@@ -35,7 +35,7 @@ public class HelloApiTest {
     TestRestTemplate testRestTemplate = new TestRestTemplate();
     // when
     ResponseEntity<String> responseEntity = testRestTemplate.getForEntity(
-        "http://localhost:8080/hello?name=", String.class);
+        "http://localhost:8080/app/hello?name=", String.class);
     // then
     assertSame(HttpStatus.INTERNAL_SERVER_ERROR, responseEntity.getStatusCode());
   }
