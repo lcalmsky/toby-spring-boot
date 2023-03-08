@@ -1,6 +1,7 @@
 package io.lcalmsky.config.autoconfig;
 
 import io.lcalmsky.config.MyAutoConfiguration;
+import org.springframework.boot.context.properties.bind.Binder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.Environment;
 
@@ -9,9 +10,6 @@ public class ServerPropertiesConfiguration {
 
   @Bean
   ServerProperties serverProperties(Environment environment) {
-    ServerProperties serverProperties = new ServerProperties();
-    serverProperties.setContextPath(environment.getProperty("context-path"));
-    serverProperties.setPort(Integer.parseInt(environment.getProperty("port")));
-    return serverProperties;
+    return Binder.get(environment).bind("", ServerProperties.class).get();
   }
 }
