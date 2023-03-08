@@ -1,3 +1,4 @@
 io.lcalmsky.config.autoconfig.TomcatWebServerConfiguration
 io.lcalmsky.config.autoconfig.JettyWebServerConfiguration
 io.lcalmsky.config.autoconfig.DispatcherServletConfiguration
+io.lcalmsky.config.autoconfig.PropertyPlaceHolderConfiguration
