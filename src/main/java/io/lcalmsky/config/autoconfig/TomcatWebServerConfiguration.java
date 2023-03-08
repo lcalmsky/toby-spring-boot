@@ -1,7 +1,6 @@
 package io.lcalmsky.config.autoconfig;
 
 import io.lcalmsky.config.ConditionalMyOnClass;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
@@ -12,14 +11,12 @@ import org.springframework.context.annotation.Configuration;
 @ConditionalMyOnClass("org.apache.catalina.startup.Tomcat")
 public class TomcatWebServerConfiguration {
 
-  @Value("${context-path}")
-  String contextPath;
-
   @Bean("tomcatWebServerFactory")
   @ConditionalOnMissingBean
-  public ServletWebServerFactory servletWebServerFactory() {
+  public ServletWebServerFactory servletWebServerFactory(ServerProperties serverProperties) {
     TomcatServletWebServerFactory factory = new TomcatServletWebServerFactory();
-    factory.setContextPath(this.contextPath);
+    factory.setContextPath(serverProperties.getContextPath());
+    factory.setPort(serverProperties.getPort());
     return factory;
   }
 }
