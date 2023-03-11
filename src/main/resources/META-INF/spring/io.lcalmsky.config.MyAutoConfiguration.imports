@@ -1,6 +1,0 @@
-io.lcalmsky.config.autoconfig.TomcatWebServerConfiguration
-io.lcalmsky.config.autoconfig.JettyWebServerConfiguration
-io.lcalmsky.config.autoconfig.DispatcherServletConfiguration
-io.lcalmsky.config.autoconfig.PropertyPlaceHolderConfiguration
-io.lcalmsky.config.autoconfig.PropertyPostProcessorConfiguration
-io.lcalmsky.config.autoconfig.DataSourceConfiguration

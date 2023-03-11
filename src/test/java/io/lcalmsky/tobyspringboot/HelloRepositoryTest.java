@@ -5,8 +5,12 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
+import org.springframework.transaction.annotation.Transactional;
 
-@HellobootTest
+@SpringBootTest(webEnvironment = WebEnvironment.NONE)
+@Transactional
 class HelloRepositoryTest {
 
   @Autowired
