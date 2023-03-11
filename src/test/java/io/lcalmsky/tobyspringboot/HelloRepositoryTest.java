@@ -1,25 +1,16 @@
 package io.lcalmsky.tobyspringboot;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
 
 @HellobootTest
 class HelloRepositoryTest {
+
   @Autowired
   HelloRepository helloRepository;
-
-  @Autowired
-  JdbcTemplate jdbcTemplate;
-
-  @BeforeEach
-  void setup() {
-    jdbcTemplate.execute(
-        "create table if not exists hello(name varchar(50) primary key, count int)");
-  }
 
   @Test
   void findHelloFailed() {
