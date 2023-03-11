@@ -1,0 +1,48 @@
+@startuml
+'https://plantuml.com/component-diagram
+
+[사용 기술 선택]
+
+[Spring Initializr]
+
+[Spring Boot Starter\n + Dependencies]
+
+[@AutoConfiguration\nAutoConfiguration.imports]
+
+[@Conditional]
+
+[사용 기술 선택] -d-> [Spring Initializr]
+[Spring Initializr] -d-> [Spring Boot Starter\n + Dependencies]: build.gradle 생성
+[Spring Boot Starter\n + Dependencies] -d-> [@AutoConfiguration\nAutoConfiguration.imports]: 클래스/라이블러리 추가
+[@AutoConfiguration\nAutoConfiguration.imports] -d-> [@Conditional]: 자동 구성 후보 로딩
+
+[디폴트 자동 구성 인프라 빈]
+
+[프로퍼티 소스\napplication.properties]
+
+[자동 구성 인프라스트럭처 빈]
+
+[사용 기술 선택] -[hidden]r-> [디폴트 자동 구성 인프라 빈]
+[Spring Initializr] -[hidden]r-> [프로퍼티 소스\napplication.properties]
+[@Conditional] -u-> [디폴트 자동 구성 인프라 빈]: 매칭 조건 판별
+[디폴트 자동 구성 인프라 빈] -d-> [프로퍼티 소스\napplication.properties]
+[프로퍼티 소스\napplication.properties] ---d-> [자동 구성 인프라스트럭처 빈]: 외부설정 프로퍼티 적용
+
+[@ComponentScan]
+
+[@Component\n애플리케이션 로직 빈]
+
+[@Configuration\n커스텀 인프라 빈]
+
+[@Configuration\n추가 인프라 빈]
+
+[유저 구성 애플리케이션 빈]
+
+[@ComponentScan] -d-> [@Component\n애플리케이션 로직 빈]: 자동 빈 등록
+[@Component\n애플리케이션 로직 빈] -d-> [@Configuration\n커스텀 인프라 빈]
+[@Configuration\n커스텀 인프라 빈] -d-> [@Configuration\n추가 인프라 빈]
+[@Configuration\n추가 인프라 빈] -d-> [유저 구성 애플리케이션 빈]
+[@Configuration\n커스텀 인프라 빈] ..> [자동 구성 인프라스트럭처 빈]
+[Spring Boot Starter\n + Dependencies] -[hidden]r-> [@Configuration\n커스텀 인프라 빈]
+
+@enduml
